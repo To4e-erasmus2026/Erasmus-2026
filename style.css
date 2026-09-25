@@ -40,8 +40,21 @@ h1, h2 {
   box-shadow: 0 2px 8px rgba(0,0,0,.15);
 }
 .brand { display: flex; align-items: center; gap: 8px; color: #fff; text-decoration: none; font-weight: 700; }
-.brand svg { width: 26px; height: 26px; fill: var(--gold); }
-.tag { font-size: 13px; font-weight: 700; letter-spacing: .06em; color: var(--gold); border: 1px solid var(--gold); border-radius: 99px; padding: 2px 10px; }
+.brand svg { flex: none; width: 26px; height: 26px; fill: var(--gold); }
+.school {
+  padding-left: 10px; border-left: 1px solid rgba(200,162,74,.6);
+  font-size: 14px; font-weight: 600; line-height: 1.25; color: rgba(255,255,255,.85);
+}
+@media (max-width: 600px) { .school span { display: block; } }
+@media (max-width: 420px) { .school { font-size: 12px; } }
+.school span { white-space: nowrap; }
+@media (max-width: 360px) {
+  .topbar { padding: 10px 12px; }
+  .brand { gap: 6px; }
+  .school { padding-left: 8px; font-size: 11px; }
+  .tag { margin-left: 8px; padding: 2px 8px; font-size: 12px; }
+}
+.tag { flex: none; margin-left: 12px; font-size: 13px; font-weight: 700; letter-spacing: .06em; color: var(--gold); border: 1px solid var(--gold); border-radius: 99px; padding: 2px 10px; }
 
 main { max-width: 860px; margin: 0 auto; padding: 0 16px 40px; }
 
