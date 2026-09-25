@@ -16,7 +16,7 @@
 */
 
 const GUIDE = {
-  title: "Archaeological Sites",
+  title: "To4e",
   subtitle: "Student Guide",
   intro:
     "Nine stops in Athens, Marathon and the Argolid — from the Battle of Marathon and the age of Pericles to the Venetians and the first Olympic marathon. Each site has its own page with its story, what to see and fun facts.",
