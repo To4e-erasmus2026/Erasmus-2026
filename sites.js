@@ -8,10 +8,10 @@
   Tips:
   - Keep the quotes " " around every text.
   - Keep the commas at the end of lines.
-  - To add a photo to a site, put the image file in the
-    "images" folder and add a line like:
-        image: "images/acropolis.jpg",
-    right under the "name:" line of that site.
+  - Each site's photo is in the "images" folder ("image:" line).
+    The "photo:" line under it is the photo credit, which the
+    free licence requires - keep it as long as you keep the photo.
+    If you replace a photo with your own, delete its "photo:" line.
   ============================================================
 */
 
@@ -26,6 +26,8 @@ const SITES = [
   // ------------------------------------------------------------ 1
   {
     id: "acropolis",
+    image: "images/acropolis.jpg",
+    photo: { author: "A.Savin", license: "CC BY-SA 3.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/", source: "https://commons.wikimedia.org/wiki/File:Attica_06-13_Athens_50_View_from_Philopappos_-_Acropolis_Hill.jpg" },
     name: "The Acropolis of Athens",
     shortName: "Acropolis",
     area: "Athens",
@@ -79,6 +81,8 @@ const SITES = [
   // ------------------------------------------------------------ 2
   {
     id: "agora",
+    image: "images/agora.jpg",
+    photo: { author: "Jebulon", license: "CC0", licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/", source: "https://commons.wikimedia.org/wiki/File:Temple_of_Hephaestus_from_ancient_agora_Athens.jpg" },
     name: "The Ancient Agora of Athens",
     shortName: "Ancient Agora",
     area: "Athens",
@@ -122,6 +126,8 @@ const SITES = [
   // ------------------------------------------------------------ 3
   {
     id: "marathon-tomb",
+    image: "images/marathon-tomb.jpg",
+    photo: { author: "Kaminska Joanna", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/", source: "https://commons.wikimedia.org/wiki/File:TYMVOS_MARATHONA.jpg" },
     name: "The Marathon Tomb (Soros)",
     shortName: "Marathon Tomb",
     area: "Marathon",
@@ -168,6 +174,9 @@ const SITES = [
   // ------------------------------------------------------------ 4
   {
     id: "marathon-trophy",
+    image: "images/marathon-trophy.jpg",
+    imageFocus: "center 12%", // which part of a tall photo to show: the top of the column
+    photo: { author: "karta24", license: "CC BY 2.5", licenseUrl: "https://creativecommons.org/licenses/by/2.5/", source: "https://commons.wikimedia.org/wiki/File:Trophee_bataille_marathon.JPG" },
     name: "The Marathon Trophy",
     shortName: "Marathon Trophy",
     area: "Marathon",
@@ -212,6 +221,8 @@ const SITES = [
   // ------------------------------------------------------------ 5
   {
     id: "brexiza",
+    image: "images/brexiza.jpg",
+    photo: { author: "Alexander954", license: "CC BY 4.0", licenseUrl: "https://creativecommons.org/licenses/by/4.0/", source: "https://commons.wikimedia.org/wiki/File:%CE%91%CF%80%CE%BF%CF%88%CE%B7_%CF%84%CE%BF%CF%85_%CE%BD%CF%8C%CF%84%CE%B9%CE%BF%CF%85_%CF%80%CF%85%CE%BB%CF%8E%CE%BD%CE%B1_%CF%84%CE%BF%CF%85_%CE%B9%CE%B5%CF%81%CE%BF%CF%8D_%CF%84%CF%89%CE%BD_%CE%91%CE%B9%CE%B3%CF%85%CF%80%CF%84%CE%AF%CF%89%CE%BD_%CE%98%CE%B5%CF%8E%CE%BD.jpg" },
     name: "Brexiza — Sanctuary of the Egyptian Gods",
     shortName: "Brexiza",
     area: "Nea Makri – Marathon",
@@ -258,6 +269,8 @@ const SITES = [
   // ------------------------------------------------------------ 6
   {
     id: "marathon-race",
+    image: "images/marathon-race.jpg",
+    photo: { author: "Mister No", license: "CC BY 3.0", licenseUrl: "https://creativecommons.org/licenses/by/3.0/", source: "https://commons.wikimedia.org/wiki/File:Panathenaic_Stadium_-_panoramio_(1).jpg" },
     name: "The Marathon Race",
     shortName: "The Marathon Race",
     area: "Marathon – Athens",
@@ -310,6 +323,8 @@ const SITES = [
   // ------------------------------------------------------------ 7
   {
     id: "epidaurus-theatre",
+    image: "images/epidaurus-theatre.jpg",
+    photo: { author: "Olecorre", license: "CC BY-SA 3.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/", source: "https://commons.wikimedia.org/wiki/File:Theatre_of_Epidaurus_OLC.jpg" },
     name: "The Ancient Theatre of Epidaurus",
     shortName: "Theatre of Epidaurus",
     area: "Argolid",
@@ -356,6 +371,8 @@ const SITES = [
   // ------------------------------------------------------------ 8
   {
     id: "asklepieion",
+    image: "images/asklepieion.jpg",
+    photo: { author: "Carole Raddato", license: "CC BY-SA 2.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0/", source: "https://commons.wikimedia.org/wiki/File:Epidaurus,_Greece.jpg" },
     name: "The Asklepieion of Epidaurus",
     shortName: "Asklepieion of Epidaurus",
     area: "Argolid",
@@ -405,6 +422,8 @@ const SITES = [
   // ------------------------------------------------------------ 9
   {
     id: "palamidi",
+    image: "images/palamidi.jpg",
+    photo: { author: "Ava babili", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/", source: "https://commons.wikimedia.org/wiki/File:Palamidi_-_Nafplio.jpg" },
     name: "Palamidi, Nafplio",
     shortName: "Palamidi",
     area: "Nafplio",

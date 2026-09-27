@@ -22,6 +22,17 @@ function mapUrl(site) {
   return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(site.map || site.name);
 }
 
+// Credit line required by the photo's free licence
+function photoCredit(p) {
+  return `Photo: <a href="${p.source}" target="_blank" rel="noopener">${p.author}</a>, ` +
+    `<a href="${p.licenseUrl}" target="_blank" rel="noopener">${p.license}</a>, via Wikimedia Commons`;
+}
+
+// Optional "imageFocus" in sites.js picks which part of the photo stays visible when it is cropped
+function focusStyle(s) {
+  return s.imageFocus ? ` style="object-position:${s.imageFocus}"` : "";
+}
+
 // ---- Home page ----
 function renderHome() {
   const visited = loadVisited();
@@ -30,7 +41,7 @@ function renderHome() {
   const cards = SITES.map((s, i) => `
     <li>
       <a class="card ${visited.includes(s.id) ? "is-visited" : ""}" href="#/site/${s.id}">
-        ${s.image ? `<img class="card-img" src="${s.image}" alt="" loading="lazy">` : ""}
+        ${s.image ? `<img class="card-img" src="${s.image}" alt="" loading="lazy"${focusStyle(s)}>` : ""}
         <span class="num">${i + 1}</span>
         <span class="card-body">
           <span class="card-meta">${s.area} · ${s.period}</span>
@@ -97,7 +108,11 @@ function renderSite(id) {
   app.innerHTML = `
     <article class="site">
       <a class="back" href="#/">← All sites</a>
-      ${s.image ? `<img class="site-img" src="${s.image}" alt="${s.name}">` : ""}
+      ${s.image ? `
+        <figure class="site-photo">
+          <img class="site-img" src="${s.image}" alt="${s.name}"${focusStyle(s)}>
+          ${s.photo ? `<figcaption>${photoCredit(s.photo)}</figcaption>` : ""}
+        </figure>` : ""}
       <header class="site-head">
         <span class="kicker">Stop ${index + 1} of ${SITES.length}</span>
         <h1>${s.name}</h1>
