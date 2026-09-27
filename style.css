@@ -93,7 +93,11 @@ main { max-width: 860px; margin: 0 auto; padding: 0 16px 40px; }
 }
 .card:hover, .card:focus-visible { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(31,78,121,.12); }
 .card.is-visited { border-left-color: var(--gold); }
-.card-img { width: calc(100% + 32px); margin: -16px -16px 0; height: 150px; object-fit: cover; border-radius: var(--radius) var(--radius) 0 0; }
+.card-img {
+  display: block; width: calc(100% + 32px); margin: -16px -16px 0; height: 170px;
+  object-fit: cover; background: var(--line);
+  border-radius: calc(var(--radius) - 2px) calc(var(--radius) - 2px) 0 0;
+}
 .num {
   flex: none; width: 34px; height: 34px; border-radius: 50%;
   display: grid; place-items: center;
@@ -104,10 +108,18 @@ main { max-width: 860px; margin: 0 auto; padding: 0 16px 40px; }
 .card-title { font-family: "Cormorant Garamond", Georgia, serif; font-size: 24px; font-weight: 700; color: var(--navy); line-height: 1.2; }
 .card-line { font-size: 15px; color: var(--muted); }
 .check { position: absolute; top: 12px; right: 14px; color: var(--gold); font-weight: 700; font-size: 20px; }
+.card-img ~ .check {
+  top: 10px; right: 10px; width: 32px; height: 32px; border-radius: 50%;
+  display: grid; place-items: center; font-size: 17px;
+  background: var(--gold); color: #fff; box-shadow: 0 2px 6px rgba(0,0,0,.25);
+}
 
 /* ---------- site page ---------- */
 .back { display: inline-block; margin: 20px 0 8px; font-weight: 600; text-decoration: none; }
-.site-img { width: 100%; max-height: 360px; object-fit: cover; border-radius: var(--radius); margin: 8px 0 16px; }
+.site-photo { margin: 8px 0 16px; }
+.site-img { display: block; width: 100%; height: clamp(200px, 50vw, 380px); object-fit: cover; border-radius: var(--radius); background: var(--line); }
+.site-photo figcaption { margin-top: 6px; font-size: 12px; color: var(--muted); }
+.site-photo figcaption a { color: inherit; }
 .site-head { padding-bottom: 8px; border-bottom: 2px solid var(--gold); margin-bottom: 8px; }
 .kicker { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); }
 .site-head h1 { font-size: clamp(32px, 7vw, 46px); margin-top: 4px; }
