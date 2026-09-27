@@ -10,14 +10,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <!-- GitHub Pages lets browsers keep old copies of files for 10 minutes.
+       Adding a changing "?v=" to the file names makes every visit load the latest version. -->
+  <script>
+    var v = Date.now();
+    document.write('<link rel="stylesheet" href="style.css?v=' + v + '">');
+  </script>
 </head>
 <body>
   <header class="topbar">
     <a href="#/" class="brand">
       <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 11h20l-10-6zM8 13h2v10H8zm5 0h2v10h-2zm5 0h2v10h-2zm5 0h2v10h-2zM6 24h20v2H6z"/></svg>
-      <span>To4e</span>
-      <span class="school">1st Senior High School <span>Nea Makri</span></span>
+      <span id="brandName"></span>
+      <span class="school" id="brandSchool"></span>
     </a>
     <span class="tag">Erasmus+</span>
   </header>
@@ -28,7 +33,9 @@
     <p>Erasmus+ project · Archaeological Sites Student Guide</p>
   </footer>
 
-  <script src="sites.js"></script>
-  <script src="app.js"></script>
+  <script>
+    document.write('<script src="sites.js?v=' + v + '"><\/script>');
+    document.write('<script src="app.js?v=' + v + '"><\/script>');
+  </script>
 </body>
 </html>
