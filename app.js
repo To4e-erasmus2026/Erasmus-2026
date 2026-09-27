@@ -3,6 +3,10 @@
 
 const app = document.getElementById("app");
 
+// Top bar text comes from sites.js
+document.getElementById("brandName").textContent = GUIDE.brand;
+document.getElementById("brandSchool").innerHTML = `${GUIDE.school} <span>${GUIDE.schoolTown}</span>`;
+
 // ---- "visited" checklist, saved on each student's own phone ----
 function loadVisited() {
   try { return JSON.parse(localStorage.getItem("visited") || "[]"); } catch (e) { return []; }
