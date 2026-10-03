@@ -3,10 +3,26 @@
 
 const app = document.getElementById("app");
 
+// The EU flag: 12 gold stars in a circle on blue, 3:2 proportions
+const EU_FLAG = (() => {
+  const star = "M0,-30 L6.74,-9.27 L28.53,-9.27 L10.9,3.54 L17.63,24.27 L0,11.46 L-17.63,24.27 L-10.9,3.54 L-28.53,-9.27 L-6.74,-9.27Z";
+  const stars = Array.from({ length: 12 }, (_, i) => {
+    const a = (i * 30 * Math.PI) / 180;
+    return `<path d="${star}" transform="translate(${(405 + 180 * Math.sin(a)).toFixed(1)},${(270 - 180 * Math.cos(a)).toFixed(1)})"/>`;
+  }).join("");
+  return `<svg class="eu-flag" viewBox="0 0 810 540" role="img" aria-label="Flag of the European Union"><rect width="810" height="540" fill="#039"/><g fill="#fc0">${stars}</g></svg>`;
+})();
+
 // Top bar text comes from sites.js
 document.getElementById("brandName").textContent = GUIDE.brand;
 document.getElementById("brandSchool").innerHTML = `${GUIDE.school} <span>${GUIDE.schoolTown}</span>`;
-document.getElementById("footer").innerHTML = GUIDE.footer.map(line => `<p>${line}</p>`).join("");
+document.getElementById("footer").innerHTML = `
+  <div class="eu">
+    ${EU_FLAG}
+    <span class="eu-label">${GUIDE.fundingLabel}</span>
+  </div>
+  ${GUIDE.footer.map(line => `<p>${line}</p>`).join("")}
+  <p class="disclaimer">${GUIDE.fundingDisclaimer}</p>`;
 
 // ---- "visited" checklist, saved on each student's own phone ----
 function loadVisited() {
