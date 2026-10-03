@@ -91,6 +91,12 @@ const SITES = [
         ],
       },
     ],
+    quiz: [
+      { q: "Why do the Parthenon's columns bulge slightly in the middle?", options: ["Because they were damaged in 1687", "So the building looks perfectly straight to the eye", "To carry more weight", "Because the marble was too soft"], answer: 1 },
+      { q: "What happened to the Parthenon in 1687?", options: ["An earthquake knocked it down", "The Persians burned it", "A shell hit it while it was used as a gunpowder store", "It was turned into a museum"], answer: 2 },
+      { q: "Where is the sixth Caryatid today?", options: ["In the British Museum", "In the Acropolis Museum", "In the Louvre", "Still on the Erechtheion"], answer: 0 },
+      { q: "What metal replaces the old iron clamps in the restoration?", options: ["Bronze", "Steel", "Gold", "Titanium"], answer: 3 },
+    ],
     sources: [
       { label: "Acropolis of Athens — Wikipedia", url: "https://en.wikipedia.org/wiki/Acropolis_of_Athens" },
     ],
@@ -134,6 +140,12 @@ const SITES = [
           "Socrates used to debate with the young people of Athens in the Agora.",
         ],
       },
+    ],
+    quiz: [
+      { q: "Hephaestus was the god of…", options: ["the sea", "fire and metalwork", "wisdom", "wine"], answer: 1 },
+      { q: "Why did the Temple of Hephaestus survive almost intact?", options: ["It became the church of St George", "It was buried under earth", "It was rebuilt in the 1950s", "Nobody ever used it"], answer: 0 },
+      { q: "What is inside the Stoa of Attalos today?", options: ["The town hall", "A church", "The Agora Museum", "A library"], answer: 2 },
+      { q: "Which philosopher used to debate with young Athenians in the Agora?", options: ["Pythagoras", "Archimedes", "Aristotle", "Socrates"], answer: 3 },
     ],
     sources: [
       { label: "Ancient Agora of Athens — Wikipedia", url: "https://en.wikipedia.org/wiki/Ancient_Agora_of_Athens" },
@@ -183,6 +195,12 @@ const SITES = [
         ],
       },
     ],
+    quiz: [
+      { q: "How many Athenians are buried in the Tomb?", options: ["48", "192", "1,000", "10,000"], answer: 1 },
+      { q: "How high is the mound?", options: ["About 10 m", "About 3 m", "About 25 m", "About 50 m"], answer: 0 },
+      { q: "Which general led the Athenians at Marathon?", options: ["Pericles", "Leonidas", "Miltiades", "Themistocles"], answer: 2 },
+      { q: "Who fought alongside the Athenians?", options: ["The Spartans", "The Romans", "The Persians", "The Plataeans"], answer: 3 },
+    ],
     sources: [
       { label: "We Love Marathon — The Tomb of Marathon", url: "https://www.welovemarathon.gr/post/tumvos-tou-marathona" },
       { label: "Archaeological Museum of Marathon — archaeologicalmuseums.gr", url: "https://archaeologicalmuseums.gr/el/museum/5df34af3deca5e2d79e8c18a/archaeological-museum-of-marathon" },
@@ -229,6 +247,12 @@ const SITES = [
           "It was about as tall as the Tomb (10 m), so the two stood like “twins” on the battlefield: one for the dead, one for the victory.",
         ],
       },
+    ],
+    quiz: [
+      { q: "The word “trophy” comes from the Greek tropē. What does it mean?", options: ["Prize", "Turning", "Column", "Victory"], answer: 1 },
+      { q: "What style is the Trophy's column?", options: ["Ionic", "Doric", "Corinthian", "Egyptian"], answer: 0 },
+      { q: "What most likely stood on top of the column?", options: ["A statue of Athena", "A bronze lion", "A winged Victory (Nike)", "A statue of Miltiades"], answer: 2 },
+      { q: "How did the pieces of the Trophy survive?", options: ["They were buried in the Tomb", "They fell into the sea", "They were kept in Athens", "They were built into a medieval tower"], answer: 3 },
     ],
     sources: [
       { label: "Ephorate of Antiquities of East Attica — Marathon, Trophy of the Battle", url: "https://www.efaanat.gr/index.php/portfolio/marathonas-tropaio/" },
@@ -278,6 +302,12 @@ const SITES = [
           "The sanctuary lay buried and forgotten until 1968 — and only opened to visitors in 2001.",
         ],
       },
+    ],
+    quiz: [
+      { q: "Which goddess was worshipped at the sanctuary?", options: ["Athena", "Isis", "Hera", "Artemis"], answer: 1 },
+      { q: "Who is the sanctuary attributed to?", options: ["Herodes Atticus", "Pericles", "Miltiades", "Emperor Hadrian"], answer: 0 },
+      { q: "What was the hypocaust of the Roman bath?", options: ["A gateway", "A water tank", "Underfloor heating", "A statue of Horus"], answer: 2 },
+      { q: "When did the site open to visitors?", options: ["1896", "1968", "2016", "2001"], answer: 3 },
     ],
     sources: [
       { label: "Athinodromio — The Sanctuary of the Egyptian Gods and the Roman Bath", url: "https://www.athinodromio.gr/" },
@@ -332,6 +362,12 @@ const SITES = [
         ],
       },
     ],
+    quiz: [
+      { q: "Who won the first Olympic marathon in 1896?", options: ["Pheidippides", "Spyros Louis", "Stefano Baldini", "Michel Bréal"], answer: 1 },
+      { q: "Why is a marathon 42.195 km long?", options: ["It was the length of the London course in 1908", "It is the distance from Marathon to Athens", "Pheidippides ran exactly that far", "It was chosen in 1896"], answer: 0 },
+      { q: "Where does the classic route finish?", options: ["At the Acropolis", "In Syntagma Square", "At the Panathenaic Stadium (Kallimarmaro)", "In the Ancient Agora"], answer: 2 },
+      { q: "Was the marathon a race at the ancient Olympic Games?", options: ["Yes, from the very first Games", "Yes, but only for soldiers", "Only when the Games were in Athens", "No — it is a 19th-century idea"], answer: 3 },
+    ],
     sources: [
       { label: "San Simera — The history of the Marathon race", url: "https://www.sansimera.gr/articles/696" },
       { label: "Marathon Run Museum — marathonrun.gr", url: "https://marathonrun.gr/en/marathon-road-race/" },
@@ -380,6 +416,12 @@ const SITES = [
           "The latest major restoration lasted almost 30 years (1988 – 2016).",
         ],
       },
+    ],
+    quiz: [
+      { q: "About how many spectators did the theatre hold?", options: ["2,000", "13,000 – 14,000", "50,000", "500"], answer: 1 },
+      { q: "Who designed the theatre?", options: ["Polykleitos the Younger", "Pheidias", "Iktinos", "Mnesikles"], answer: 0 },
+      { q: "Which famous singer performed Bellini's Norma here in 1960?", options: ["Nana Mouskouri", "Melina Mercouri", "Maria Callas", "Agnes Baltsa"], answer: 2 },
+      { q: "What mainly explains the theatre's amazing acoustics?", options: ["Hidden bronze pipes", "A roof that reflects sound", "The marble floor", "The shape of the seating, designed from three centre points"], answer: 3 },
     ],
     sources: [
       { label: "Theatre of Epidaurus — Wikipedia", url: "https://en.wikipedia.org/wiki/Theatre_of_Epidaurus" },
@@ -430,6 +472,12 @@ const SITES = [
           "The Asklepieion and the theatre together have been a UNESCO World Heritage Site since 1988.",
         ],
       },
+    ],
+    quiz: [
+      { q: "Which animal was the symbol of Asklepios?", options: ["The owl", "The snake", "The eagle", "The lion"], answer: 1 },
+      { q: "What happened in the Abaton?", options: ["The sick slept there, hoping the god would heal them in a dream", "Athletic games were held there", "Pilgrims stayed there as guests", "Plays were performed there"], answer: 0 },
+      { q: "What were the iamata?", options: ["Medicine jars", "The priests of Asklepios", "Stone slabs recording cures", "Hot baths"], answer: 2 },
+      { q: "What is underneath the Tholos?", options: ["A spring", "A treasure room", "A royal tomb", "A labyrinth of three circular corridors"], answer: 3 },
     ],
     sources: [
       { label: "Ephorate of Antiquities of Argolida — Sanctuary of Asklepios at Epidaurus", url: "https://www.argolisculture.gr/el/lista-mnimeion/arhaiologikos-horos-asklipieiou-epidayrou/" },
@@ -484,6 +532,12 @@ const SITES = [
           "It was the last great castle the Venetians built outside their own lands.",
         ],
       },
+    ],
+    quiz: [
+      { q: "How many steps lead up to Palamidi in reality?", options: ["999", "857", "500", "1,200"], answer: 1 },
+      { q: "Who built the fortress?", options: ["The Venetians", "The Ottomans", "The Byzantines", "The French"], answer: 0 },
+      { q: "Which hero of the Greek Revolution was imprisoned here?", options: ["Miltiades", "Leonidas", "Theodoros Kolokotronis", "King Otto"], answer: 2 },
+      { q: "In which year did Greek revolutionaries capture Palamidi?", options: ["1714", "1840", "1896", "1822"], answer: 3 },
     ],
     sources: [
       { label: "Palamidi — Wikipedia", url: "https://en.wikipedia.org/wiki/Palamidi" },

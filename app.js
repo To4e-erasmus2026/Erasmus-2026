@@ -40,6 +40,75 @@ function toggleVisited(id) {
   render();
 }
 
+// ---- quiz: best score per site, saved on each student's own phone ----
+function loadScores() {
+  try { return JSON.parse(localStorage.getItem("quizScores") || "{}"); } catch (e) { return {}; }
+}
+function saveScore(id, score) {
+  const scores = loadScores();
+  if (!(id in scores) || score > scores[id]) {
+    scores[id] = score;
+    try { localStorage.setItem("quizScores", JSON.stringify(scores)); } catch (e) {}
+  }
+}
+
+function renderQuiz(s) {
+  if (!s.quiz || !s.quiz.length) return "";
+  const best = loadScores()[s.id];
+  return `
+    <section class="block quiz" id="quiz">
+      <h2>Quick quiz</h2>
+      <p class="quiz-intro">${s.quiz.length} questions about what you just read.${best !== undefined ? ` Your best: <b>${best} / ${s.quiz.length}</b>` : ""}</p>
+      ${s.quiz.map((item, qi) => `
+        <fieldset class="question" data-q="${qi}">
+          <legend><span class="qnum">${qi + 1}</span>${item.q}</legend>
+          ${item.options.map((opt, oi) => `<button type="button" class="option" data-o="${oi}">${opt}</button>`).join("")}
+          <p class="feedback" aria-live="polite"></p>
+        </fieldset>`).join("")}
+      <div class="quiz-result" hidden></div>
+    </section>`;
+}
+
+function setUpQuiz(s) {
+  const box = document.getElementById("quiz");
+  if (!box) return;
+  let answered = 0, correct = 0;
+  box.querySelectorAll(".question").forEach(fs => {
+    const item = s.quiz[+fs.dataset.q];
+    fs.addEventListener("click", e => {
+      const btn = e.target.closest(".option");
+      if (!btn || fs.classList.contains("done")) return;
+      fs.classList.add("done");
+      const chosen = +btn.dataset.o;
+      const right = chosen === item.answer;
+      fs.querySelectorAll(".option").forEach((b, oi) => {
+        b.disabled = true;
+        if (oi === item.answer) b.classList.add("right");
+      });
+      if (!right) btn.classList.add("wrong");
+      fs.querySelector(".feedback").innerHTML = right
+        ? "✓ Correct!"
+        : `✗ Not quite — the answer is <b>${item.options[item.answer]}</b>.`;
+      answered++;
+      if (right) correct++;
+      if (answered === s.quiz.length) showResult();
+    });
+  });
+
+  function showResult() {
+    saveScore(s.id, correct);
+    const total = s.quiz.length;
+    const msg = correct === total ? "Perfect score! 🏆" : correct >= total / 2 ? "Well done!" : "Read the page again and have another go!";
+    const result = box.querySelector(".quiz-result");
+    result.innerHTML = `<p><b>${correct} / ${total}</b> — ${msg}</p><button type="button" class="btn btn-ghost" id="quizAgain">Try again</button>`;
+    result.hidden = false;
+    document.getElementById("quizAgain").addEventListener("click", () => {
+      renderSite(s.id);
+      document.getElementById("quiz").scrollIntoView();
+    });
+  }
+}
+
 function mapUrl(site) {
   return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(site.map || site.name);
 }
@@ -59,6 +128,9 @@ function focusStyle(s) {
 function renderHome() {
   const visited = loadVisited();
   const done = SITES.filter(s => visited.includes(s.id)).length;
+  const scores = loadScores();
+  const points = Object.values(scores).reduce((a, b) => a + b, 0);
+  const maxPoints = SITES.reduce((a, s) => a + (s.quiz ? s.quiz.length : 0), 0);
 
   const cards = SITES.map((s, i) => `
     <li>
@@ -69,6 +141,7 @@ function renderHome() {
           <span class="card-meta">${s.area} · ${s.period}</span>
           <span class="card-title">${s.shortName}</span>
           <span class="card-line">${s.oneLine}</span>
+          ${s.id in scores ? `<span class="card-quiz">★ Quiz ${scores[s.id]} / ${s.quiz.length}</span>` : ""}
         </span>
         ${visited.includes(s.id) ? `<span class="check" title="Visited">✓</span>` : ""}
       </a>
@@ -83,6 +156,7 @@ function renderHome() {
         <div class="progress-bar"><span style="width:${(done / SITES.length) * 100}%"></span></div>
         <span>${done} of ${SITES.length} sites visited</span>
       </div>
+      ${maxPoints ? `<p class="quiz-total">★ Quiz points: <b>${points} of ${maxPoints}</b>${points ? "" : " — every site page ends with a short quiz"}</p>` : ""}
       <p class="offline-note" ${savedOffline ? "" : "hidden"}>✓ Saved on this device — works without internet</p>
     </section>
     <ol class="cards">${cards}</ol>`;
@@ -154,6 +228,8 @@ function renderSite(id) {
 
       ${s.sections.map(renderSection).join("")}
 
+      ${renderQuiz(s)}
+
       ${s.sources && s.sources.length ? `
         <section class="block sources">
           <h2>Learn more</h2>
@@ -167,6 +243,7 @@ function renderSite(id) {
     </article>`;
 
   document.getElementById("visitBtn").addEventListener("click", () => toggleVisited(s.id));
+  setUpQuiz(s);
   document.title = `${s.shortName} — ${GUIDE.title}`;
 }
 
