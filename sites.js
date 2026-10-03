@@ -44,6 +44,7 @@ const SITES = [
   // ------------------------------------------------------------ 1
   {
     id: "acropolis",
+    coords: [37.9717, 23.7261], // position on the map
     image: "images/acropolis.jpg",
     photo: { author: "A.Savin", license: "CC BY-SA 3.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/", source: "https://commons.wikimedia.org/wiki/File:Attica_06-13_Athens_50_View_from_Philopappos_-_Acropolis_Hill.jpg" },
     name: "The Acropolis of Athens",
@@ -105,6 +106,7 @@ const SITES = [
   // ------------------------------------------------------------ 2
   {
     id: "agora",
+    coords: [37.9750, 23.7225], // position on the map
     image: "images/agora.jpg",
     photo: { author: "Jebulon", license: "CC0", licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/", source: "https://commons.wikimedia.org/wiki/File:Temple_of_Hephaestus_from_ancient_agora_Athens.jpg" },
     name: "The Ancient Agora of Athens",
@@ -156,6 +158,7 @@ const SITES = [
   // ------------------------------------------------------------ 3
   {
     id: "marathon-tomb",
+    coords: [38.1180, 23.9783], // position on the map
     image: "images/marathon-tomb.jpg",
     photo: { author: "Kaminska Joanna", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/", source: "https://commons.wikimedia.org/wiki/File:TYMVOS_MARATHONA.jpg" },
     name: "The Marathon Tomb (Soros)",
@@ -210,6 +213,7 @@ const SITES = [
   // ------------------------------------------------------------ 4
   {
     id: "marathon-trophy",
+    coords: [38.1410, 24.0005], // position on the map
     image: "images/marathon-trophy.jpg",
     imageFocus: "center 12%", // which part of a tall photo to show: the top of the column
     photo: { author: "karta24", license: "CC BY 2.5", licenseUrl: "https://creativecommons.org/licenses/by/2.5/", source: "https://commons.wikimedia.org/wiki/File:Trophee_bataille_marathon.JPG" },
@@ -263,6 +267,7 @@ const SITES = [
   // ------------------------------------------------------------ 5
   {
     id: "brexiza",
+    coords: [38.1033, 23.9795], // position on the map
     image: "images/brexiza.jpg",
     photo: { author: "Alexander954", license: "CC BY 4.0", licenseUrl: "https://creativecommons.org/licenses/by/4.0/", source: "https://commons.wikimedia.org/wiki/File:%CE%91%CF%80%CE%BF%CF%88%CE%B7_%CF%84%CE%BF%CF%85_%CE%BD%CF%8C%CF%84%CE%B9%CE%BF%CF%85_%CF%80%CF%85%CE%BB%CF%8E%CE%BD%CE%B1_%CF%84%CE%BF%CF%85_%CE%B9%CE%B5%CF%81%CE%BF%CF%8D_%CF%84%CF%89%CE%BD_%CE%91%CE%B9%CE%B3%CF%85%CF%80%CF%84%CE%AF%CF%89%CE%BD_%CE%98%CE%B5%CF%8E%CE%BD.jpg" },
     name: "Brexiza — Sanctuary of the Egyptian Gods",
@@ -317,6 +322,7 @@ const SITES = [
   // ------------------------------------------------------------ 6
   {
     id: "marathon-race",
+    coords: [38.1553, 23.9612], // position on the map
     image: "images/marathon-race.jpg",
     photo: { author: "Mister No", license: "CC BY 3.0", licenseUrl: "https://creativecommons.org/licenses/by/3.0/", source: "https://commons.wikimedia.org/wiki/File:Panathenaic_Stadium_-_panoramio_(1).jpg" },
     name: "The Marathon Race",
@@ -377,6 +383,7 @@ const SITES = [
   // ------------------------------------------------------------ 7
   {
     id: "epidaurus-theatre",
+    coords: [37.5961, 23.0792], // position on the map
     image: "images/epidaurus-theatre.jpg",
     photo: { author: "Olecorre", license: "CC BY-SA 3.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/", source: "https://commons.wikimedia.org/wiki/File:Theatre_of_Epidaurus_OLC.jpg" },
     name: "The Ancient Theatre of Epidaurus",
@@ -431,6 +438,7 @@ const SITES = [
   // ------------------------------------------------------------ 8
   {
     id: "asklepieion",
+    coords: [37.5986, 23.0744], // position on the map
     image: "images/asklepieion.jpg",
     photo: { author: "Carole Raddato", license: "CC BY-SA 2.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0/", source: "https://commons.wikimedia.org/wiki/File:Epidaurus,_Greece.jpg" },
     name: "The Asklepieion of Epidaurus",
@@ -488,6 +496,7 @@ const SITES = [
   // ------------------------------------------------------------ 9
   {
     id: "palamidi",
+    coords: [37.5639, 22.7953], // position on the map
     image: "images/palamidi.jpg",
     photo: { author: "Ava babili", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/", source: "https://commons.wikimedia.org/wiki/File:Palamidi_-_Nafplio.jpg" },
     name: "Palamidi, Nafplio",

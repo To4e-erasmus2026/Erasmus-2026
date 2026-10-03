@@ -157,6 +157,7 @@ function renderHome() {
         <span>${done} of ${SITES.length} sites visited</span>
       </div>
       ${maxPoints ? `<p class="quiz-total">★ Quiz points: <b>${points} of ${maxPoints}</b>${points ? "" : " — every site page ends with a short quiz"}</p>` : ""}
+      <a class="btn map-btn" href="#/map">🗺 All sites on a map</a>
       <p class="offline-note" ${savedOffline ? "" : "hidden"}>✓ Saved on this device — works without internet</p>
     </section>
     <ol class="cards">${cards}</ol>`;
@@ -247,12 +248,94 @@ function renderSite(id) {
   document.title = `${s.shortName} — ${GUIDE.title}`;
 }
 
-// ---- Simple router: #/ = home, #/site/acropolis = a site ----
+// ---- Map page: all sites on one map (Leaflet + OpenStreetMap, both free) ----
+let leafletLoading = null;
+function loadLeaflet() {
+  if (window.L) return Promise.resolve();
+  if (leafletLoading) return leafletLoading;
+  const base = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/";
+  const css = document.createElement("link");
+  css.rel = "stylesheet";
+  css.href = base + "leaflet.min.css";
+  css.integrity = "sha512-h9FcoyWjHcOcmEVkxOfTLnmZFWIH0iZhZT1H2TbOq55xssQGEJHEaIm+PgoUaZbRvQTNTluNOEfb1ZRy6D3BOw==";
+  css.crossOrigin = "anonymous";
+  document.head.appendChild(css);
+  leafletLoading = new Promise((resolve, reject) => {
+    const js = document.createElement("script");
+    js.src = base + "leaflet.min.js";
+    js.integrity = "sha512-puJW3E/qXDqYp9IfhAI54BJEaWIfloJ7JWs7OeD5i6ruC9JZL1gERT1wjtwXFlh7CjE7ZJ+/vcRZRkIYIb6p4g==";
+    js.crossOrigin = "anonymous";
+    js.onload = resolve;
+    js.onerror = () => { leafletLoading = null; js.remove(); reject(); };
+    document.head.appendChild(js);
+  });
+  return leafletLoading;
+}
+
+function renderMap() {
+  app.innerHTML = `
+    <article class="site map-page">
+      <a class="back" href="#/">← All sites</a>
+      <h1>All sites on the map</h1>
+      <p class="lead">Tap a number to see the site's name and open its page.</p>
+      <div class="map-zoom" id="mapZoom"></div>
+      <div id="map" class="map"><p class="map-msg">Loading the map…</p></div>
+      <ol class="map-list">
+        ${SITES.map((s, i) => `<li><a href="#/site/${s.id}"><span class="num">${i + 1}</span>${s.shortName}<small>${s.area}</small></a></li>`).join("")}
+      </ol>
+    </article>`;
+  document.title = `Map — ${GUIDE.title}`;
+
+  loadLeaflet().then(() => {
+    const el = document.getElementById("map");
+    if (!el) return; // the student already left the map page
+    el.innerHTML = "";
+    const map = L.map(el, { scrollWheelZoom: false });
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',
+    }).addTo(map);
+    const points = SITES.filter(s => s.coords).map((s) => {
+      const n = SITES.indexOf(s) + 1;
+      const icon = L.divIcon({ className: "map-pin", html: `<span>${n}</span>`, iconSize: [30, 30], iconAnchor: [15, 15] });
+      L.marker(s.coords, { icon, title: s.shortName }).addTo(map)
+        .bindPopup(`<b>${n}. ${s.shortName}</b><br>${s.area} · ${s.period}<br><a href="#/site/${s.id}">Open page →</a>`);
+      return s.coords;
+    });
+    const showAll = () => map.fitBounds(points, { padding: [30, 30] });
+    showAll();
+
+    // Sites close together overlap when the whole trip is shown,
+    // so add a button per area (sites within ~13 km of each other) to zoom in.
+    const groups = [];
+    SITES.filter(s => s.coords).forEach(s => {
+      const g = groups.find(g => g.some(o => Math.abs(o.coords[0] - s.coords[0]) < 0.12 && Math.abs(o.coords[1] - s.coords[1]) < 0.12));
+      if (g) g.push(s); else groups.push([s]);
+    });
+    const bar = document.getElementById("mapZoom");
+    bar.innerHTML = `<button type="button" class="chip on" data-g="all">Whole trip</button>` +
+      groups.map((g, i) => `<button type="button" class="chip" data-g="${i}">${g[0].area}</button>`).join("");
+    bar.addEventListener("click", e => {
+      const btn = e.target.closest("button");
+      if (!btn) return;
+      bar.querySelectorAll("button").forEach(b => b.classList.toggle("on", b === btn));
+      if (btn.dataset.g === "all") showAll();
+      else map.fitBounds(groups[+btn.dataset.g].map(s => s.coords), { padding: [50, 50], maxZoom: 15 });
+    });
+  }).catch(() => {
+    const el = document.getElementById("map");
+    if (el) el.innerHTML = `<p class="map-msg">The map needs an internet connection. Everything else in this guide works offline — use the list below.</p>`;
+  });
+}
+
+// ---- Simple router: #/ = home, #/map = map, #/site/acropolis = a site ----
 let lastHash = null;
 function render() {
   const hash = location.hash || "#/";
   const m = hash.match(/^#\/site\/([\w-]+)/);
-  if (m) renderSite(m[1]); else renderHome();
+  if (m) renderSite(m[1]);
+  else if (hash.startsWith("#/map")) renderMap();
+  else renderHome();
   if (hash !== lastHash) window.scrollTo(0, 0);
   lastHash = hash;
 }
