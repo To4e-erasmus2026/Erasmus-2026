@@ -2,6 +2,7 @@
 // You normally don't need to edit this file.
 
 const app = document.getElementById("app");
+let savedOffline = false; // becomes true once sw.js has saved the site on this device
 
 // The EU flag: 12 gold stars in a circle on blue, 3:2 proportions
 const EU_FLAG = (() => {
@@ -82,6 +83,7 @@ function renderHome() {
         <div class="progress-bar"><span style="width:${(done / SITES.length) * 100}%"></span></div>
         <span>${done} of ${SITES.length} sites visited</span>
       </div>
+      <p class="offline-note" ${savedOffline ? "" : "hidden"}>✓ Saved on this device — works without internet</p>
     </section>
     <ol class="cards">${cards}</ol>`;
   document.title = `${GUIDE.title} — ${GUIDE.subtitle}`;
@@ -180,3 +182,13 @@ function render() {
 
 window.addEventListener("hashchange", render);
 render();
+
+// ---- Save the site on the device so it works offline (see sw.js) ----
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js").catch(() => {});
+  navigator.serviceWorker.ready.then(() => {
+    savedOffline = true;
+    const note = document.querySelector(".offline-note");
+    if (note) note.hidden = false;
+  });
+}
