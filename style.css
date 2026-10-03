@@ -190,3 +190,4 @@ main { max-width: 860px; margin: 0 auto; padding: 0 16px 40px; }
 
 .footer { text-align: center; color: var(--muted); font-size: 14px; padding: 20px 16px 32px; border-top: 1px solid var(--line); }
 .footer p { margin: 0; }
+.footer p + p { margin-top: 4px; }

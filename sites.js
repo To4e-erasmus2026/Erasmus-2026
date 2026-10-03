@@ -26,6 +26,12 @@ const GUIDE = {
   subtitle: "Student Guide",
   intro:
     "Nine stops in Athens, Marathon and the Argolid — from the Battle of Marathon and the age of Pericles to the Venetians and the first Olympic marathon. Each site has its own page with its story, what to see and fun facts.",
+
+  // Bottom of every page: one line per text
+  footer: [
+    "Erasmus+ project · Archaeological Sites Student Guide",
+    "To4E - 2025-1-RO01-KA220-SCH-000362818 Greece",
+  ],
 };
 
 const SITES = [
