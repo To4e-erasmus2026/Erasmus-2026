@@ -32,6 +32,12 @@ const GUIDE = {
     "Erasmus+ project · Archaeological Sites Student Guide",
     "To4E - 2025-1-RO01-KA220-SCH-000362818 Greece",
   ],
+
+  // EU funding notice in the footer (shown next to the EU flag).
+  // Check the exact wording with your project coordinator.
+  fundingLabel: "Co-funded by the European Union",
+  fundingDisclaimer:
+    "Funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Education and Culture Executive Agency (EACEA). Neither the European Union nor EACEA can be held responsible for them.",
 };
 
 const SITES = [

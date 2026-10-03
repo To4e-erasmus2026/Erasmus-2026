@@ -206,3 +206,7 @@ main { max-width: 860px; margin: 0 auto; padding: 0 16px 40px; }
 .footer { text-align: center; color: var(--muted); font-size: 14px; padding: 20px 16px 32px; border-top: 1px solid var(--line); }
 .footer p { margin: 0; }
 .footer p + p { margin-top: 4px; }
+.eu { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 14px; text-align: left; }
+.eu-flag { flex: none; width: 60px; height: 40px; }
+.eu-label { font-family: Arial, Helvetica, sans-serif; font-size: 15px; font-weight: 700; line-height: 1.2; color: var(--ink); max-width: 13em; }
+.footer .disclaimer { max-width: 60ch; margin: 14px auto 0; font-size: 12px; line-height: 1.5; }
