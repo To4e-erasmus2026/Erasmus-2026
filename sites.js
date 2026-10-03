@@ -19,7 +19,7 @@ const GUIDE = {
   // Top-left corner of every page (the home button)
   brand: "To4e",
   school: "1st Senior High School",
-  schoolTown: "Nea Makri",
+  schoolTown: "Nea Makri, Greece",
 
   // Big heading on the home page
   title: "Archaeological Sites",
