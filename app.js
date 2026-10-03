@@ -6,6 +6,7 @@ const app = document.getElementById("app");
 // Top bar text comes from sites.js
 document.getElementById("brandName").textContent = GUIDE.brand;
 document.getElementById("brandSchool").innerHTML = `${GUIDE.school} <span>${GUIDE.schoolTown}</span>`;
+document.getElementById("footer").innerHTML = GUIDE.footer.map(line => `<p>${line}</p>`).join("");
 
 // ---- "visited" checklist, saved on each student's own phone ----
 function loadVisited() {
