@@ -7,7 +7,7 @@
 // When you add a new file to the site, add it to FILES below
 // and raise the number in VERSION by one.
 
-const VERSION = "to4e-v1";
+const VERSION = "to4e-v2";
 
 const FILES = [
   "./",
@@ -15,6 +15,10 @@ const FILES = [
   "style.css",
   "sites.js",
   "app.js",
+  "lang/ro.js",
+  "lang/pt.js",
+  "lang/es.js",
+  "lang/tr.js",
   "images/acropolis.jpg",
   "images/agora.jpg",
   "images/marathon-tomb.jpg",
